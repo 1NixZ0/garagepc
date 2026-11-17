@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CatalogoHardware;
 use App\Models\Componente;
+use App\Support\Busqueda;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -35,11 +36,8 @@ class CatalogoBusquedaController extends Controller
 
         $consulta = CatalogoHardware::query()->where('tipo', $datos['categoria']);
 
-        // Cada palabra acota la búsqueda, así "ryzen 7 7800" encuentra el
-        // modelo aunque el usuario escriba los terminos en otro orden.
-        foreach (preg_split('/\s+/', trim($datos['q'])) as $termino) {
-            $escapado = addcslashes($termino, '%_\\');
-            $consulta->where('modelo', 'like', '%'.$escapado.'%');
+        foreach (Busqueda::terminos($datos['q']) as $termino) {
+            $consulta->where('modelo', 'like', '%'.$termino.'%');
         }
 
         $resultados = $consulta
@@ -49,9 +47,8 @@ class CatalogoBusquedaController extends Controller
             ->get()
             ->map(fn (CatalogoHardware $hardware) => [
                 'id' => $hardware->id,
-                'modelo' => $hardware->modelo,
-                'anio' => $hardware->anio_lanzamiento,
-                'gama' => self::GAMAS[$hardware->categoria_rendimiento] ?? '',
+                'texto' => $hardware->modelo,
+                'detalle' => $hardware->anio_lanzamiento.' · '.(self::GAMAS[$hardware->categoria_rendimiento] ?? ''),
             ]);
 
         return response()->json($resultados);

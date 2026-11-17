@@ -29,11 +29,20 @@ class ComponenteController extends Controller
     {
         $this->verificarPropiedad($request, $equipo);
 
-        $equipo->componentes()->create($request->validated());
+        $componente = $equipo->componentes()->create($request->validated());
 
         return redirect()
-            ->route('equipos.show', $equipo)
+            ->route('equipos.componentes.show', [$equipo, $componente])
             ->with('estado', 'Componente agregado.');
+    }
+
+    public function show(Request $request, Equipo $equipo, Componente $componente): View
+    {
+        $this->verificarPropiedad($request, $equipo);
+
+        $componente->load('catalogo', 'intervenciones');
+
+        return view('componentes.show', compact('equipo', 'componente'));
     }
 
     public function edit(Request $request, Equipo $equipo, Componente $componente): View
@@ -50,7 +59,7 @@ class ComponenteController extends Controller
         $componente->update($request->validated());
 
         return redirect()
-            ->route('equipos.show', $equipo)
+            ->route('equipos.componentes.show', [$equipo, $componente])
             ->with('estado', 'Componente actualizado.');
     }
 

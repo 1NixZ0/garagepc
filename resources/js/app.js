@@ -1,26 +1,36 @@
 /**
- * Autocompletado del Catálogo de Hardware.
+ * Autocompletado contra los catálogos del sistema.
  *
- * Sugiere modelos ya catalogados mientras el usuario escribe y, si elige uno,
- * guarda su identificador en un campo oculto. Eso es lo que después le permite
- * al Motor de Análisis conocer la gama y el año de lanzamiento de la pieza.
+ * Sirve para el Catálogo de Hardware y para el Catálogo de Juegos: el
+ * contenedor declara a qué URL consultar y, si corresponde, de qué otro campo
+ * depende la búsqueda (la categoría del componente, por ejemplo).
  *
- * Escribir un modelo que no está en el catálogo sigue siendo válido: es el
- * camino que contempla el CU-08 para hardware no catalogado. Por eso, si el
- * servidor no responde, el campo se comporta como un texto libre común.
+ * Cuando el usuario elige una opción se guarda su identificador en un campo
+ * oculto; eso es lo que después le permite al sistema conocer la gama, el año
+ * o la exigencia de lo que cargó. Escribir algo que no está catalogado sigue
+ * siendo válido, así que si el servidor no responde el campo se comporta como
+ * un texto libre común.
  */
 
 const ESPERA_MS = 200;
 const MINIMO_CARACTERES = 2;
-const AYUDA_LIBRE = 'Escribilo tal cual figura en la caja o en la factura.';
 
 function montarAutocompletado(contenedor) {
-    const campo = contenedor.querySelector('[data-catalogo-campo]');
-    const oculto = contenedor.querySelector('[data-catalogo-id]');
-    const lista = contenedor.querySelector('[data-catalogo-lista]');
-    const ayuda = contenedor.querySelector('[data-catalogo-ayuda]');
-    const categoria = document.querySelector('[data-catalogo-categoria]');
-    const url = campo.dataset.catalogoUrl;
+    const campo = contenedor.querySelector('[data-auto-campo]');
+    const oculto = contenedor.querySelector('[data-auto-id]');
+    const lista = contenedor.querySelector('[data-auto-lista]');
+    const ayuda = contenedor.querySelector('[data-auto-ayuda]');
+
+    if (!campo || !oculto || !lista) {
+        return;
+    }
+
+    const url = contenedor.dataset.autoUrl;
+    const ayudaLibre = ayuda ? ayuda.textContent.trim() : '';
+    const dependencia = contenedor.dataset.autoDepende
+        ? document.querySelector(contenedor.dataset.autoDepende)
+        : null;
+    const nombreParametro = contenedor.dataset.autoParametro || null;
 
     let temporizador = null;
     let resultados = [];
@@ -31,21 +41,24 @@ function montarAutocompletado(contenedor) {
         resaltado = -1;
     };
 
-    const marcarAyuda = (texto, enCatalogo) => {
+    const marcarAyuda = (texto, catalogado) => {
+        if (!ayuda) {
+            return;
+        }
         ayuda.textContent = texto;
-        ayuda.classList.toggle('text-carbon-200', enCatalogo);
-        ayuda.classList.toggle('text-carbon-400', !enCatalogo);
+        ayuda.classList.toggle('text-carbon-200', catalogado);
+        ayuda.classList.toggle('text-carbon-400', !catalogado);
     };
 
     const soltarSeleccion = () => {
         oculto.value = '';
-        marcarAyuda(AYUDA_LIBRE, false);
+        marcarAyuda(ayudaLibre, false);
     };
 
     const elegir = (item) => {
-        campo.value = item.modelo;
+        campo.value = item.texto;
         oculto.value = item.id;
-        marcarAyuda(`En el catálogo · ${item.anio} · ${item.gama}`, true);
+        marcarAyuda(`En el catálogo · ${item.detalle}`, true);
         ocultarLista();
     };
 
@@ -64,14 +77,14 @@ function montarAutocompletado(contenedor) {
                 indice === resaltado ? 'bg-carbon-700 text-white' : 'text-carbon-200',
             ].join(' ');
 
-            const modelo = document.createElement('span');
-            modelo.textContent = item.modelo;
+            const texto = document.createElement('span');
+            texto.textContent = item.texto;
 
             const detalle = document.createElement('span');
             detalle.className = 'shrink-0 text-xs text-carbon-400';
-            detalle.textContent = `${item.anio} · ${item.gama}`;
+            detalle.textContent = item.detalle;
 
-            fila.append(modelo, detalle);
+            fila.append(texto, detalle);
 
             // mousedown y no click: el blur del campo llega antes que el click
             // y cerraria la lista justo cuando el usuario intenta elegir.
@@ -89,13 +102,17 @@ function montarAutocompletado(contenedor) {
     const buscar = async () => {
         const termino = campo.value.trim();
 
-        if (termino.length < MINIMO_CARACTERES || !categoria) {
+        if (termino.length < MINIMO_CARACTERES) {
             resultados = [];
             ocultarLista();
             return;
         }
 
-        const consulta = new URLSearchParams({ categoria: categoria.value, q: termino });
+        const consulta = new URLSearchParams({ q: termino });
+
+        if (dependencia && nombreParametro) {
+            consulta.set(nombreParametro, dependencia.value);
+        }
 
         try {
             const respuesta = await fetch(`${url}?${consulta}`, {
@@ -144,8 +161,8 @@ function montarAutocompletado(contenedor) {
 
     campo.addEventListener('blur', () => setTimeout(ocultarLista, 120));
 
-    if (categoria) {
-        categoria.addEventListener('change', () => {
+    if (dependencia) {
+        dependencia.addEventListener('change', () => {
             soltarSeleccion();
             resultados = [];
             ocultarLista();
@@ -157,4 +174,4 @@ function montarAutocompletado(contenedor) {
     }
 }
 
-document.querySelectorAll('[data-catalogo]').forEach(montarAutocompletado);
+document.querySelectorAll('[data-auto]').forEach(montarAutocompletado);

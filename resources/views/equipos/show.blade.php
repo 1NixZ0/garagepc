@@ -68,7 +68,12 @@
                                     {{ $componente->etiquetaCategoria() }}
                                 </span>
                             </td>
-                            <td class="px-4 py-3 text-carbon-100">{{ $componente->modelo }}</td>
+                            <td class="px-4 py-3">
+                                <a href="{{ route('equipos.componentes.show', [$equipo, $componente]) }}"
+                                   class="text-carbon-100 underline underline-offset-4 hover:text-white">
+                                    {{ $componente->modelo }}
+                                </a>
+                            </td>
                             <td class="px-4 py-3 text-carbon-400">{{ $componente->fecha_compra->format('d/m/Y') }}</td>
                             <td class="px-4 py-3 text-right text-carbon-200">
                                 {{ $componente->moneda_compra }} {{ number_format($componente->precio_compra, 2, ',', '.') }}
@@ -85,8 +90,10 @@
                                 ])>{{ $componente->etiquetaEstado() }}</span>
                             </td>
                             <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <a href="{{ route('equipos.componentes.show', [$equipo, $componente]) }}"
+                                   class="text-carbon-300 underline underline-offset-4 hover:text-carbon-100">Bitácora</a>
                                 <a href="{{ route('equipos.componentes.edit', [$equipo, $componente]) }}"
-                                   class="text-carbon-300 underline underline-offset-4 hover:text-carbon-100">Editar</a>
+                                   class="ml-2 text-carbon-300 underline underline-offset-4 hover:text-carbon-100">Editar</a>
                                 <form method="POST" class="ml-2 inline"
                                       action="{{ route('equipos.componentes.destroy', [$equipo, $componente]) }}"
                                       onsubmit="return confirm('¿Eliminar {{ $componente->modelo }}? Se borra también su bitácora.')">

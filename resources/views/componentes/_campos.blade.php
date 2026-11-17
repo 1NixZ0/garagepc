@@ -5,7 +5,7 @@
 <div class="grid gap-6 sm:grid-cols-2">
     <div>
         <label for="categoria" class="etiqueta block">Categoría</label>
-        <select id="categoria" name="categoria" required data-catalogo-categoria
+        <select id="categoria" name="categoria" required
                 class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                        outline-none focus:border-carbon-400">
             @foreach (\App\Models\Componente::CATEGORIAS as $valor => $etiqueta)
@@ -28,24 +28,27 @@
     </div>
 </div>
 
-<div class="relative" data-catalogo>
+<div class="relative" data-auto
+     data-auto-url="{{ route('catalogo.buscar') }}"
+     data-auto-depende="#categoria"
+     data-auto-parametro="categoria">
     <label for="modelo" class="etiqueta block">Modelo</label>
 
     <input id="modelo" name="modelo" type="text" required maxlength="150" autocomplete="off"
            value="{{ old('modelo', $actual->modelo ?? '') }}"
            placeholder="Empezá a escribir: ryzen 7, rtx 3070, b550..."
-           data-catalogo-campo data-catalogo-url="{{ route('catalogo.buscar') }}"
+           data-auto-campo
            class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                   placeholder-carbon-600 outline-none focus:border-carbon-400">
 
-    <input type="hidden" name="catalogo_hardware_id" data-catalogo-id
+    <input type="hidden" name="catalogo_hardware_id" data-auto-id
            value="{{ old('catalogo_hardware_id', $actual->catalogo_hardware_id ?? '') }}">
 
-    <ul data-catalogo-lista
+    <ul data-auto-lista
         class="absolute left-0 right-0 top-full z-20 mt-1 hidden max-h-72 overflow-y-auto rounded-lg
                border border-carbon-700 bg-carbon-800 py-1 shadow-xl"></ul>
 
-    <p data-catalogo-ayuda class="mt-1.5 text-xs text-carbon-400">Escribilo tal cual figura en la caja o en la factura.</p>
+    <p data-auto-ayuda class="mt-1.5 text-xs text-carbon-400">Escribilo tal cual figura en la caja o en la factura.</p>
     @error('modelo')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
     @error('catalogo_hardware_id')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
 </div>

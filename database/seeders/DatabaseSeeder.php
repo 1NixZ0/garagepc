@@ -10,15 +10,14 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Datos de referencia del sistema. Los dos seeders son idempotentes:
-     * se pueden volver a correr sin duplicar nada ni pisar ajustes hechos
-     * desde el panel de administración, salvo los de los modelos que ya
-     * figuran en la carga inicial.
+     * Datos de referencia del sistema. Los seeders son idempotentes: se
+     * pueden volver a correr sin duplicar nada.
      */
     public function run(): void
     {
         $this->call([
             CatalogoHardwareSeeder::class,
+            CatalogoJuegoSeeder::class,
             TablasDeReferenciaSeeder::class,
         ]);
     }
