@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -11,15 +10,16 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Seed the application's database.
+     * Datos de referencia del sistema. Los dos seeders son idempotentes:
+     * se pueden volver a correr sin duplicar nada ni pisar ajustes hechos
+     * desde el panel de administración, salvo los de los modelos que ya
+     * figuran en la carga inicial.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            CatalogoHardwareSeeder::class,
+            TablasDeReferenciaSeeder::class,
         ]);
     }
 }

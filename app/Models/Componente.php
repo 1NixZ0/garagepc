@@ -19,6 +19,42 @@ class Componente extends Model
 {
     use HasFactory;
 
+    /**
+     * Vocabulario del dominio. Vive acá y no repartido por las vistas:
+     * los enum de la base y las etiquetas que ve el usuario tienen un
+     * único lugar donde cambiar.
+     */
+    public const CATEGORIAS = [
+        'cpu' => 'CPU',
+        'gpu' => 'GPU',
+        'ram' => 'RAM',
+        'almacenamiento' => 'Almacenamiento',
+        'motherboard' => 'Motherboard',
+        'fuente' => 'Fuente',
+        'refrigeracion' => 'Refrigeración',
+        'gabinete' => 'Gabinete',
+        'otro' => 'Otro',
+    ];
+
+    public const ESTADOS = [
+        'activo' => 'Activo',
+        'en_reparacion' => 'En reparación',
+        'retirado' => 'Retirado',
+    ];
+
+    public const CONDICIONES = [
+        'excelente' => 'Excelente',
+        'muy_bueno' => 'Muy bueno',
+        'bueno' => 'Bueno',
+        'regular' => 'Regular',
+    ];
+
+    public const MONEDAS = [
+        'ARS' => 'Peso argentino (ARS)',
+        'USD' => 'Dólar (USD)',
+        'BRL' => 'Real (BRL)',
+    ];
+
     protected $table = 'componentes';
 
     protected $fillable = [
@@ -60,6 +96,28 @@ class Componente extends Model
     public function publicacion(): HasOne
     {
         return $this->hasOne(Publicacion::class)->where('estado', 'activa');
+    }
+
+    /**
+     * Costo en dólares a la fecha de compra. Se divide por la paridad
+     * congelada, nunca por la cotización de hoy: el costo histórico de un
+     * equipo no puede cambiar porque el dólar se haya movido.
+     */
+    public function costoEnUsd(): float
+    {
+        $cotizacion = (float) $this->cotizacion_compra;
+
+        return $cotizacion > 0 ? (float) $this->precio_compra / $cotizacion : 0.0;
+    }
+
+    public function etiquetaCategoria(): string
+    {
+        return self::CATEGORIAS[$this->categoria] ?? $this->categoria;
+    }
+
+    public function etiquetaEstado(): string
+    {
+        return self::ESTADOS[$this->estado] ?? $this->estado;
     }
 
     /** Antigüedad del componente en meses, desde la fecha de compra. */
