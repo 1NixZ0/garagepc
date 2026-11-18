@@ -308,17 +308,26 @@ devuelve 403.
 
 ## Aplicación móvil
 
-El cliente Android vive en un repositorio propio. Ver su `README.md` para
-las instrucciones de instalación.
+El cliente Android nativo vive en la carpeta [`movil/`](movil) de este mismo
+repositorio, con su propio `README.md`. Está escrito en Kotlin con Jetpack
+Compose y consume la API REST documentada arriba.
+
+Antes de compilarlo hay que indicarle la dirección de red del servidor: las
+instrucciones están en [`movil/README.md`](movil/README.md).
 
 ---
 
 ## Estado del proyecto
 
-Implementado: Seguridad y Acceso, Garaje Virtual, Bitácora de
+**Implementado.** Seguridad y Acceso, Garaje Virtual, Bitácora de
 Mantenimiento, Seguimiento de Rendimiento, Catálogo de Hardware, Motor de
-Análisis Proactivo, Cotizador Multimoneda, Dashboard General y la API REST.
+Análisis Proactivo, Cotizador Multimoneda, Dashboard General, la API REST y la
+aplicación Android en sus funciones de campo.
 
-Pendiente: el Panel de Administración del Catálogo, la separación de roles
-entre Administrador y Usuario Estándar, y el Marketplace Interno, que el
-diseño original clasifica como módulo complementario.
+**Pendiente en la aplicación web.** El Panel de Administración del Catálogo, la
+separación de roles entre Administrador y Usuario Estándar, y el Marketplace
+Interno, que el diseño original clasifica como módulo complementario.
+
+**Pendiente en la aplicación móvil.** La fotografía tomada con la cámara, el
+trabajo sin conexión con sincronización posterior y las notificaciones push.
+El detalle requisito por requisito está en [`movil/README.md`](movil/README.md).
