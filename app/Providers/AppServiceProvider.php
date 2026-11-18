@@ -11,16 +11,18 @@ use App\Services\Analisis\EvaluadorAlertas;
 use App\Services\Analisis\ReglaAntiguedad;
 use App\Services\Analisis\ReglaDegradacion;
 use App\Services\Analisis\ReglaMantenimiento;
+use App\Services\Cotizador\Conversor;
+use App\Services\Cotizador\ServicioCotizaciones;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Armado del Motor de Análisis Proactivo.
+     * Armado del Motor de Análisis Proactivo y del Cotizador.
      *
      * Los repositorios se registran por interfaz para poder sustituirlos por
-     * dobles en las pruebas. Los umbrales llegan desde config/analisis.php,
-     * conforme a RF-ANA-06.
+     * dobles en las pruebas. Los umbrales y la serie de cotización llegan
+     * desde la configuración, conforme a RF-ANA-06 y RF-COT-05.
      */
     public function register(): void
     {
@@ -42,6 +44,17 @@ class AppServiceProvider extends ServiceProvider
                 config('analisis.reglas', []),
             );
         });
+
+        $this->app->singleton(ServicioCotizaciones::class, fn () => new ServicioCotizaciones(
+            rtrim((string) config('cotizador.base_url'), '/'),
+            (string) config('cotizador.serie'),
+            (int) config('cotizador.timeout'),
+        ));
+
+        $this->app->singleton(Conversor::class, fn () => new Conversor(
+            (int) config('cotizador.advertencia_horas'),
+            (int) config('cotizador.vencimiento_dias'),
+        ));
     }
 
     public function boot(): void

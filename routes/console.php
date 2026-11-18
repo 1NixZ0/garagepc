@@ -16,3 +16,11 @@ Schedule::command('analisis:evaluar')
     ->dailyAt('03:00')
     ->withoutOverlapping()
     ->onOneServer();
+
+/*
+ * RF-COT-02: el servicio externo de tipos de cambio se consulta con una
+ * frecuencia mínima de una vez por hora.
+ */
+Schedule::command('cotizaciones:actualizar')
+    ->hourly()
+    ->withoutOverlapping();

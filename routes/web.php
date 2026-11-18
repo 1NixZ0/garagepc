@@ -7,6 +7,7 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\CatalogoBusquedaController;
 use App\Http\Controllers\CatalogoJuegoBusquedaController;
 use App\Http\Controllers\ComponenteController;
+use App\Http\Controllers\CotizadorController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\IntervencionController;
 use App\Http\Controllers\PanelController;
@@ -59,6 +60,9 @@ Route::middleware('auth')->group(function () {
     // ---------------------------------------------------- Motor de Analisis
     Route::get('/sugerencias', [AlertaController::class, 'index'])->name('sugerencias');
     Route::patch('/alertas/{alerta}/vista', [AlertaController::class, 'marcarVista'])->name('alertas.vista');
+
+    // ---------------------------------------------------------- Cotizador
+    Route::get('/cotizador', CotizadorController::class)->name('cotizador');
 
     // ---------------------------------------------------------- Catalogos
     Route::middleware('throttle:60,1')->group(function () {
