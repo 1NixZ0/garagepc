@@ -320,9 +320,14 @@ instrucciones están en [`movil/README.md`](movil/README.md).
 ## Estado del proyecto
 
 **Implementado.** Seguridad y Acceso, Garaje Virtual, Bitácora de
-Mantenimiento, Seguimiento de Rendimiento, Catálogo de Hardware, Motor de
-Análisis Proactivo, Cotizador Multimoneda, Dashboard General, la API REST y la
-aplicación Android en sus funciones de campo.
+Mantenimiento, Seguimiento de Rendimiento, Motor de Análisis Proactivo,
+Cotizador Multimoneda, Dashboard General, la API REST y la aplicación Android
+en sus funciones de campo.
+
+El Catálogo de Hardware anda como fuente de datos: alimenta el autocompletado
+del alta de componentes y las reglas del Motor de Análisis. Lo que todavía no
+está es la pantalla con la que el Administrador lo mantiene, así que hoy se
+carga por seeder.
 
 **Pendiente en la aplicación web.** El Panel de Administración del Catálogo, la
 separación de roles entre Administrador y Usuario Estándar, y el Marketplace

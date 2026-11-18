@@ -204,6 +204,25 @@ de depuración, porque el cuerpo del login incluye la contraseña.
 
 ## Estado de los requisitos
 
+De los trece requerimientos del módulo M-10, siete están andando contra el
+servidor. El recorrido de campo se hace entero desde el teléfono: iniciar
+sesión, mirar el garaje, abrir la ficha de un componente con su bitácora y su
+rendimiento, anotar una intervención, cargar una sesión, ver los avisos del
+Motor de Análisis y convertir importes.
+
+Los seis que faltan no están desparramados: son dos bloques.
+
+Cuatro de ellos —RF-MOV-07, 08, 09 y 13— son el trabajo sin conexión. Guardar
+local, sincronizar, resolver conflictos y operar en modo lectura no son cuatro
+funciones sueltas, son un subsistema; y uno que no tiene sentido construir
+antes de que el camino en línea esté firme. Esta entrega es la que lo dejó
+firme.
+
+Los otros dos dependen de algo que vive fuera de la aplicación. RF-MOV-05
+necesita que la API acepte archivos, cosa que todavía no hace. Y RF-MOV-12
+necesita un servicio de mensajería que no figura en el contexto tecnológico del
+documento del Seminario: antes de incorporarlo hay que declararlo ahí.
+
 | Requisito | Estado |
 |---|---|
 | RF-MOV-01 Inicio de sesión y sesión persistente | Implementado |
@@ -220,4 +239,4 @@ de depuración, porque el cuerpo del login incluye la contraseña.
 | RF-MOV-12 Notificación push ante una alerta nueva | Pendiente |
 | RF-MOV-13 Modo solo lectura sin conexión | Pendiente |
 
-Los pendientes y sus motivos están analizados en el informe técnico.
+El informe técnico desarrolla cada uno de estos puntos.
