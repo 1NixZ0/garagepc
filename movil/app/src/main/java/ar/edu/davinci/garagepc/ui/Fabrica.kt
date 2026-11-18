@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import ar.edu.davinci.garagepc.GaragePcApp
+import ar.edu.davinci.garagepc.ui.pantallas.ComponenteViewModel
 import ar.edu.davinci.garagepc.ui.pantallas.GarajeViewModel
 import ar.edu.davinci.garagepc.ui.pantallas.LoginViewModel
 
@@ -27,6 +28,13 @@ object Fabrica {
         initializer {
             val app = this[APPLICATION_KEY] as GaragePcApp
             GarajeViewModel(app.repositorio)
+        }
+    }
+
+    val componente = viewModelFactory {
+        initializer {
+            val app = this[APPLICATION_KEY] as GaragePcApp
+            ComponenteViewModel(app.repositorio)
         }
     }
 }

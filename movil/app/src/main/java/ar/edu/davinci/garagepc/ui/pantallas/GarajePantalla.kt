@@ -36,6 +36,7 @@ import ar.edu.davinci.garagepc.ui.Fabrica
 @Composable
 fun GarajePantalla(
     alCerrarSesion: () -> Unit,
+    alAbrirComponente: (Int) -> Unit,
     modelo: GarajeViewModel = viewModel(factory = Fabrica.garaje),
 ) {
     val estado by modelo.estado.collectAsState()
@@ -89,7 +90,7 @@ fun GarajePantalla(
 
                 estado.equipoElegido == null -> ListaDeEquipos(estado.equipos, modelo::elegir)
 
-                else -> ListaDeComponentes(estado.componentes)
+                else -> ListaDeComponentes(estado.componentes, alAbrirComponente)
             }
         }
     }
@@ -155,7 +156,7 @@ private fun ListaDeEquipos(equipos: List<EquipoDto>, alElegir: (EquipoDto) -> Un
 }
 
 @Composable
-private fun ListaDeComponentes(componentes: List<ComponenteDto>) {
+private fun ListaDeComponentes(componentes: List<ComponenteDto>, alAbrir: (Int) -> Unit) {
     if (componentes.isEmpty()) {
         Aviso("Este equipo no tiene componentes cargados.") {}
 
@@ -166,7 +167,9 @@ private fun ListaDeComponentes(componentes: List<ComponenteDto>) {
         items(componentes, key = { it.id }) { componente ->
             Card(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { alAbrir(componente.id) },
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(

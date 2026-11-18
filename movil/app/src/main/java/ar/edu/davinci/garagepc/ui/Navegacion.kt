@@ -3,10 +3,13 @@ package ar.edu.davinci.garagepc.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import ar.edu.davinci.garagepc.GaragePcApp
+import ar.edu.davinci.garagepc.ui.pantallas.ComponentePantalla
 import ar.edu.davinci.garagepc.ui.pantallas.GarajePantalla
 import ar.edu.davinci.garagepc.ui.pantallas.LoginPantalla
 
@@ -20,6 +23,7 @@ import ar.edu.davinci.garagepc.ui.pantallas.LoginPantalla
 object Rutas {
     const val LOGIN = "login"
     const val GARAJE = "garaje"
+    const val COMPONENTE = "componente"
 }
 
 @Composable
@@ -49,6 +53,17 @@ fun Navegacion() {
                         popUpTo(Rutas.GARAJE) { inclusive = true }
                     }
                 },
+                alAbrirComponente = { id -> navegador.navigate("${Rutas.COMPONENTE}/$id") },
+            )
+        }
+
+        composable(
+            route = "${Rutas.COMPONENTE}/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType }),
+        ) { entrada ->
+            ComponentePantalla(
+                componenteId = entrada.arguments?.getInt("id") ?: 0,
+                alVolver = { navegador.popBackStack() },
             )
         }
     }
