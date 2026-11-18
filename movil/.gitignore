@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# GaragePC: estado local de Android Studio y del compilador de Kotlin.
+# No aporta al proyecto y cambia en cada build.
+/.idea
+/.kotlin
