@@ -11,7 +11,7 @@
 @php
     $secciones = [
         ['panel', 'Dashboard'],
-        ['equipos.index', 'Componentes'],
+        ['equipos.index', 'Garaje'],
         ['bitacora', 'Bitacora'],
         ['rendimiento', 'Rendimiento'],
         ['sugerencias', 'Sugerencias'],

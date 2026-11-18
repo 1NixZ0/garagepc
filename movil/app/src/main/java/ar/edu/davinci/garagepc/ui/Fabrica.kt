@@ -4,9 +4,12 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import ar.edu.davinci.garagepc.GaragePcApp
+import ar.edu.davinci.garagepc.ui.pantallas.AlertasViewModel
 import ar.edu.davinci.garagepc.ui.pantallas.ComponenteViewModel
+import ar.edu.davinci.garagepc.ui.pantallas.CotizadorViewModel
 import ar.edu.davinci.garagepc.ui.pantallas.GarajeViewModel
 import ar.edu.davinci.garagepc.ui.pantallas.LoginViewModel
+import ar.edu.davinci.garagepc.ui.pantallas.RendimientoViewModel
 
 /**
  * Construcción de los modelos de vista con el repositorio ya inyectado.
@@ -19,22 +22,40 @@ object Fabrica {
 
     val login = viewModelFactory {
         initializer {
-            val app = this[APPLICATION_KEY] as GaragePcApp
-            LoginViewModel(app.repositorio)
+            LoginViewModel(aplicacion().repositorio)
         }
     }
 
     val garaje = viewModelFactory {
         initializer {
-            val app = this[APPLICATION_KEY] as GaragePcApp
-            GarajeViewModel(app.repositorio)
+            GarajeViewModel(aplicacion().repositorio)
         }
     }
 
     val componente = viewModelFactory {
         initializer {
-            val app = this[APPLICATION_KEY] as GaragePcApp
-            ComponenteViewModel(app.repositorio)
+            ComponenteViewModel(aplicacion().repositorio)
         }
     }
+
+    val alertas = viewModelFactory {
+        initializer {
+            AlertasViewModel(aplicacion().repositorio)
+        }
+    }
+
+    val cotizador = viewModelFactory {
+        initializer {
+            CotizadorViewModel(aplicacion().repositorio)
+        }
+    }
+
+    val rendimiento = viewModelFactory {
+        initializer {
+            RendimientoViewModel(aplicacion().repositorio)
+        }
+    }
+
+    private fun androidx.lifecycle.viewmodel.CreationExtras.aplicacion(): GaragePcApp =
+        this[APPLICATION_KEY] as GaragePcApp
 }
