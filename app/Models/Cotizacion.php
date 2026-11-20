@@ -22,6 +22,13 @@ class Cotizacion extends Model
 
     protected $fillable = ['ars_por_usd', 'brl_por_usd', 'origen', 'obtenida_en'];
 
+    /**
+     * Ver la nota del mismo método en Alerta: la forma exacta del arreglo es
+     * lo que deja que el análisis estático sepa que obtenida_en es una fecha
+     * y no una cadena, que es de lo que depende el control de antigüedad.
+     *
+     * @return array{ars_por_usd: 'decimal:6', brl_por_usd: 'decimal:6', obtenida_en: 'datetime'}
+     */
     protected function casts(): array
     {
         return [

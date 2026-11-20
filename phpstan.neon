@@ -1,0 +1,15 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app
+        - database/seeders
+        - routes
+
+    # Larastan trabaja por niveles del 0 al 10. Se arranca en un nivel
+    # intermedio y se sube cuando el anterior queda limpio: analizar un
+    # proyecto existente directamente en el maximo devuelve una lista que
+    # nadie puede leer ni priorizar.
+    level: 5

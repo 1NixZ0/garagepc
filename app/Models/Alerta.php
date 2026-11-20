@@ -25,6 +25,14 @@ class Alerta extends Model
         'fundamento', 'estado', 'evaluada_en', 'vista_en',
     ];
 
+    /**
+     * La forma exacta del arreglo es lo que permite al análisis estático
+     * reconocer los casts declarados por método, que es la forma que adopta
+     * Laravel desde la versión 11. Sin ella, la herramienta se queda con el
+     * tipo de la columna y trata fundamento como texto.
+     *
+     * @return array{fundamento: 'array', evaluada_en: 'datetime', vista_en: 'datetime'}
+     */
     protected function casts(): array
     {
         return [
