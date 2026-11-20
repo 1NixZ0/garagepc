@@ -12,7 +12,7 @@
                 <option value="{{ $valor }}" @selected(old('categoria', $actual->categoria ?? '') === $valor)>{{ $etiqueta }}</option>
             @endforeach
         </select>
-        @error('categoria')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('categoria')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 
     <div>
@@ -24,7 +24,7 @@
                 <option value="{{ $valor }}" @selected(old('estado', $actual->estado ?? 'activo') === $valor)>{{ $etiqueta }}</option>
             @endforeach
         </select>
-        @error('estado')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('estado')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 </div>
 
@@ -49,8 +49,8 @@
                border border-carbon-700 bg-carbon-800 py-1 shadow-xl"></ul>
 
     <p data-auto-ayuda class="mt-1.5 text-xs text-carbon-400">Escribilo tal cual figura en la caja o en la factura.</p>
-    @error('modelo')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
-    @error('catalogo_hardware_id')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+    @error('modelo')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
+    @error('catalogo_hardware_id')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
 </div>
 
 <div class="grid gap-6 sm:grid-cols-2">
@@ -61,7 +61,7 @@
                value="{{ old('fecha_compra', optional($actual?->fecha_compra)->toDateString() ?? '') }}"
                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                       outline-none focus:border-carbon-400 [color-scheme:dark]">
-        @error('fecha_compra')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('fecha_compra')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 
     <div>
@@ -74,7 +74,7 @@
                 <option value="{{ $valor }}" @selected(old('condicion_declarada', $actual->condicion_declarada ?? '') === $valor)>{{ $etiqueta }}</option>
             @endforeach
         </select>
-        @error('condicion_declarada')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('condicion_declarada')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 </div>
 
@@ -85,7 +85,7 @@
                value="{{ old('precio_compra', $actual->precio_compra ?? '') }}"
                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                       outline-none focus:border-carbon-400">
-        @error('precio_compra')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('precio_compra')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 
     <div>
@@ -97,7 +97,7 @@
                 <option value="{{ $valor }}" @selected(old('moneda_compra', $actual->moneda_compra ?? 'ARS') === $valor)>{{ $etiqueta }}</option>
             @endforeach
         </select>
-        @error('moneda_compra')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('moneda_compra')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 
     <div>
@@ -108,7 +108,7 @@
                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                       placeholder-carbon-600 outline-none focus:border-carbon-400">
         <p class="mt-1.5 text-xs text-carbon-400">Cuántos pesos (o reales) valía un dólar ese día. Si pagaste en dólares, dejalo vacío.</p>
-        @error('cotizacion_compra')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+        @error('cotizacion_compra')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
     </div>
 </div>
 
@@ -118,5 +118,5 @@
               placeholder="Dónde lo compraste, si tiene garantía, lo que quieras."
               class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                      placeholder-carbon-600 outline-none focus:border-carbon-400">{{ old('notas', $actual->notas ?? '') }}</textarea>
-    @error('notas')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+    @error('notas')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
 </div>

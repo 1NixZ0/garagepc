@@ -10,12 +10,12 @@
     <div class="flex min-h-full flex-col items-center justify-center px-4 py-12">
 
         <a href="{{ url('/') }}" class="mb-10 text-xl font-semibold tracking-tight">
-            Garage<span class="text-marca-500">PC</span>
+            Garage<span class="text-marca-400">PC</span>
         </a>
 
-        <div class="w-full max-w-sm rounded-2xl border border-carbon-700 bg-carbon-800 p-8">
+        <main class="w-full max-w-sm rounded-2xl border border-carbon-700 bg-carbon-800 p-8">
             @yield('contenido')
-        </div>
+        </main>
 
         <p class="etiqueta mt-10">Seminario Final &middot; Escuela Da Vinci</p>
     </div>

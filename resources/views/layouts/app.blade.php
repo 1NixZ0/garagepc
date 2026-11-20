@@ -30,7 +30,7 @@
     <div class="mx-auto flex h-14 max-w-7xl items-center gap-8 px-6">
 
         <a href="{{ route('panel') }}" class="shrink-0 text-sm font-semibold tracking-tight">
-            Garage<span class="text-marca-500">PC</span>
+            Garage<span class="text-marca-400">PC</span>
         </a>
 
         <nav class="flex items-center gap-1 text-sm">

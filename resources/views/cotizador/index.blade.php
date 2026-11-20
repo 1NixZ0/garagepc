@@ -68,7 +68,7 @@
                                value="{{ $monto }}" placeholder="500"
                                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                       placeholder-carbon-600 outline-none focus:border-carbon-400">
-                        @error('monto')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                        @error('monto')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                     </div>
 
                     <div>

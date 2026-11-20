@@ -6,7 +6,7 @@
            class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                   placeholder-carbon-600 outline-none focus:border-carbon-400">
     @error('nombre')
-        <p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>
+        <p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>
     @enderror
 </div>
 
@@ -17,6 +17,6 @@
               class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                      placeholder-carbon-600 outline-none focus:border-carbon-400">{{ old('descripcion', $equipo->descripcion ?? '') }}</textarea>
     @error('descripcion')
-        <p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>
+        <p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>
     @enderror
 </div>

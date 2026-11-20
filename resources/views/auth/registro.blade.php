@@ -16,7 +16,7 @@
                    class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                           outline-none focus:border-carbon-400">
             @error('name')
-                <p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>
+                <p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>
             @enderror
         </div>
 
@@ -27,7 +27,7 @@
                    class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                           outline-none focus:border-carbon-400">
             @error('email')
-                <p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>
+                <p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>
             @enderror
         </div>
 
@@ -39,7 +39,7 @@
                           outline-none focus:border-carbon-400">
             <p class="mt-1.5 text-xs text-carbon-400">Al menos 8 caracteres, con letras y n&uacute;meros.</p>
             @error('password')
-                <p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>
+                <p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>
             @enderror
         </div>
 

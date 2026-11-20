@@ -171,7 +171,7 @@
                                     <option value="{{ $valor }}" @selected(old('tipo') === $valor)>{{ $etiqueta }}</option>
                                 @endforeach
                             </select>
-                            @error('tipo')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('tipo')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
 
                         <div>
@@ -182,7 +182,7 @@
                                    value="{{ old('fecha', now()->toDateString()) }}"
                                    class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                           outline-none focus:border-carbon-400 [color-scheme:dark]">
-                            @error('fecha')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('fecha')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
                     </div>
 
@@ -192,7 +192,7 @@
                                   placeholder="Arctic MX-4 aplicada. La temperatura en reposo bajó 8 °C."
                                   class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                          placeholder-carbon-600 outline-none focus:border-carbon-400">{{ old('descripcion') }}</textarea>
-                        @error('descripcion')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                        @error('descripcion')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                     </div>
 
                     <button type="submit"

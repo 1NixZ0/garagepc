@@ -59,8 +59,8 @@
                                    border border-carbon-700 bg-carbon-800 py-1 shadow-xl"></ul>
 
                         <p data-auto-ayuda class="mt-1.5 text-xs text-carbon-400">Si no está en la lista, escribilo igual.</p>
-                        @error('juego')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
-                        @error('catalogo_juego_id')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                        @error('juego')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
+                        @error('catalogo_juego_id')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2">
@@ -74,7 +74,7 @@
                                         @selected(old('resolucion', $sesiones->first()->resolucion ?? '1080p') === $valor)>{{ $etiqueta }}</option>
                                 @endforeach
                             </select>
-                            @error('resolucion')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('resolucion')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
 
                         <div>
@@ -87,7 +87,7 @@
                                         @selected(old('nivel_calidad', $sesiones->first()->nivel_calidad ?? 'alto') === $valor)>{{ $etiqueta }}</option>
                                 @endforeach
                             </select>
-                            @error('nivel_calidad')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('nivel_calidad')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
                     </div>
 
@@ -97,7 +97,7 @@
                                value="{{ old('fps_promedio') }}" placeholder="200"
                                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                       placeholder-carbon-600 outline-none focus:border-carbon-400">
-                        @error('fps_promedio')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                        @error('fps_promedio')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                     </div>
 
                     <div class="grid gap-5 sm:grid-cols-2">
@@ -107,7 +107,7 @@
                                    value="{{ old('temp_cpu') }}" placeholder="65"
                                    class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                           placeholder-carbon-600 outline-none focus:border-carbon-400">
-                            @error('temp_cpu')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('temp_cpu')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
 
                         <div>
@@ -116,7 +116,7 @@
                                    value="{{ old('temp_gpu') }}" placeholder="72"
                                    class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                           placeholder-carbon-600 outline-none focus:border-carbon-400">
-                            @error('temp_gpu')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                            @error('temp_gpu')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
                                value="{{ old('fecha_sesion', now()->format('Y-m-d\\TH:i')) }}"
                                class="mt-1.5 w-full rounded-lg border border-carbon-700 bg-carbon-900 px-3 py-2 text-sm
                                       outline-none focus:border-carbon-400 [color-scheme:dark]">
-                        @error('fecha_sesion')<p class="mt-1.5 text-xs text-marca-500">{{ $message }}</p>@enderror
+                        @error('fecha_sesion')<p class="mt-1.5 text-xs text-marca-400">{{ $message }}</p>@enderror
                     </div>
 
                     <button type="submit"
