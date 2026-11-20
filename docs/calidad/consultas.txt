@@ -1,0 +1,17 @@
+Sesiones agregadas: 189
+Total en la configuración «Counter-Strike 2 / 1080p / alto»: 200
+
+-- ============================================================
+-- 1. Historial de rendimiento  (RendimientoController::show)
+-- ============================================================
+select * from `sesiones_rendimiento` where `sesiones_rendimiento`.`equipo_id` = 4 and `sesiones_rendimiento`.`equipo_id` is not null order by `fecha_sesion` desc;
+
+-- ============================================================
+-- 2. Autocompletado del Catálogo de Hardware  (CatalogoBusquedaController)
+-- ============================================================
+select * from `catalogo_hardware` where `tipo` = 'gpu' and `modelo` like '%rtx%' order by `anio_lanzamiento` desc, `modelo` asc limit 10;
+
+-- ============================================================
+-- 3. Autocompletado del Catálogo de Juegos  (CatalogoJuegoBusquedaController)
+-- ============================================================
+select * from `catalogo_juegos` where `nombre` like '%cyber%' order by `anio_lanzamiento` desc, `nombre` asc limit 10;

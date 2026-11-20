@@ -1,0 +1,326 @@
+Note: Using configuration file C:\laragon\www\garagepc\phpstan.neon.
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+  Line   app\Console\Commands\CargarDemostracion.php                                                                                                                                                                                         
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+  43     Parameter #1 $callback of method Illuminate\Database\Eloquent\Builder<Illuminate\Database\Eloquent\Model>::each() expects callable(Illuminate\Database\Eloquent\Model, int): mixed, Closure(App\Models\Equipo): (bool|null) given.  
+         🪪  argument.type                                                                                                                                                                                                                   
+  56     Parameter #1 $equipo of method App\Console\Commands\CargarDemostracion::componente() expects App\Models\Equipo, Illuminate\Database\Eloquent\Model given.                                                                           
+         🪪  argument.type                                                                                                                                                                                                                   
+  57     Parameter #1 $equipo of method App\Console\Commands\CargarDemostracion::componente() expects App\Models\Equipo, Illuminate\Database\Eloquent\Model given.                                                                           
+         🪪  argument.type                                                                                                                                                                                                                   
+  58     Parameter #1 $equipo of method App\Console\Commands\CargarDemostracion::componente() expects App\Models\Equipo, Illuminate\Database\Eloquent\Model given.                                                                           
+         🪪  argument.type                                                                                                                                                                                                                   
+  59     Parameter #1 $equipo of method App\Console\Commands\CargarDemostracion::componente() expects App\Models\Equipo, Illuminate\Database\Eloquent\Model given.                                                                           
+         🪪  argument.type                                                                                                                                                                                                                   
+  75     Parameter #1 $equipo of method App\Console\Commands\CargarDemostracion::sesiones() expects App\Models\Equipo, Illuminate\Database\Eloquent\Model given.                                                                             
+         🪪  argument.type                                                                                                                                                                                                                   
+  96     Method App\Console\Commands\CargarDemostracion::componente() should return App\Models\Componente but returns Illuminate\Database\Eloquent\Model.                                                                                    
+         🪪  return.type                                                                                                                                                                                                                     
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\AlertaController.php                                              
+ ------ --------------------------------------------------------------------------------------- 
+  38     Access to an undefined property Illuminate\Database\Eloquent\Model::$equipo.           
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\Api\ComponenteApiController.php                                   
+ ------ --------------------------------------------------------------------------------------- 
+  26     Access to an undefined property Illuminate\Database\Eloquent\Model::$user_id.          
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  31     Access to an undefined property Illuminate\Database\Eloquent\Model::$id.               
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  43     Access to an undefined property App\Models\SesionRendimiento::$cantidad.               
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  44     Access to an undefined property App\Models\SesionRendimiento::$promedio.               
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------ 
+  Line   app\Http\Controllers\Api\CotizacionApiController.php  
+ ------ ------------------------------------------------------ 
+  43     Cannot call method toIso8601String() on string.       
+         🪪  method.nonObject                                  
+ ------ ------------------------------------------------------ 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\Api\IntervencionApiController.php                                 
+ ------ --------------------------------------------------------------------------------------- 
+  23     Access to an undefined property Illuminate\Database\Eloquent\Model::$user_id.          
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\EquipoController.php                                                                                                                                                                                            
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  52     Parameter #1 $callback of method Illuminate\Support\Collection<int,Illuminate\Database\Eloquent\Model>::sum() expects (callable(Illuminate\Database\Eloquent\Model, int): float)|string|null, Closure(App\Models\Componente): float  
+          given.                                                                                                                                                                                                                              
+         🪪  argument.type                                                                                                                                                                                                                    
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\IntervencionController.php                                        
+ ------ --------------------------------------------------------------------------------------- 
+  48     Access to an undefined property Illuminate\Database\Eloquent\Model::$user_id.          
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\RendimientoController.php                                                                                                                                                                                       
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  43     Parameter #1 $groupBy of method Illuminate\Support\Collection<int,Illuminate\Database\Eloquent\Model>::groupBy() expects (callable(Illuminate\Database\Eloquent\Model, int): string)|list<Closure|string>|string, Closure(App\Model  
+         s\SesionRendimiento): string given.                                                                                                                                                                                                  
+         🪪  argument.type                                                                                                                                                                                                                    
+         💡  Type #2 from the union: Closure(App\Models\SesionRendimiento): string is not a list.                                                                                                                                             
+  44     Parameter #1 $callback of method Illuminate\Database\Eloquent\Collection<(int|string),Illuminate\Database\Eloquent\Collection<int, Illuminate\Database\Eloquent\Model>>::map() contains unresolvable type.                           
+         🪪  argument.unresolvableType                                                                                                                                                                                                        
+  45     Call to an undefined method Illuminate\Database\Eloquent\Model::claveConfiguracion().                                                                                                                                                
+         🪪  method.notFound                                                                                                                                                                                                                  
+  46     Call to an undefined method Illuminate\Database\Eloquent\Model::etiquetaConfiguracion().                                                                                                                                             
+         🪪  method.notFound                                                                                                                                                                                                                  
+  47     Access to an undefined property Illuminate\Database\Eloquent\Model::$juego.                                                                                                                                                          
+         🪪  property.notFound                                                                                                                                                                                                                
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                                                                                                
+  48     Access to an undefined property Illuminate\Database\Eloquent\Model::$resolucion.                                                                                                                                                     
+         🪪  property.notFound                                                                                                                                                                                                                
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                                                                                                
+  49     Access to an undefined property Illuminate\Database\Eloquent\Model::$nivel_calidad.                                                                                                                                                  
+         🪪  property.notFound                                                                                                                                                                                                                
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                                                                                                
+  52     Parameter #1 $callback of method Illuminate\Support\Collection<(int|string),array<string, mixed>>::sortByDesc() contains unresolvable type.                                                                                          
+         🪪  argument.unresolvableType                                                                                                                                                                                                        
+  58     Parameter #1 $callback of method Illuminate\Support\Collection<int,Illuminate\Database\Eloquent\Model>::filter() expects (callable(Illuminate\Database\Eloquent\Model, int): bool)|null, Closure(App\Models\SesionRendimiento): boo  
+         l given.                                                                                                                                                                                                                             
+         🪪  argument.type                                                                                                                                                                                                                    
+  104    Parameter #1 $callback of method Illuminate\Support\Collection<(int|string),mixed>::map() contains unresolvable type.                                                                                                                
+         🪪  argument.unresolvableType                                                                                                                                                                                                        
+  111    Cannot call method format() on string.                                                                                                                                                                                               
+         🪪  method.nonObject                                                                                                                                                                                                                 
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Controllers\SesionRendimientoController.php                                   
+ ------ --------------------------------------------------------------------------------------- 
+  23     Call to an undefined method Illuminate\Database\Eloquent\Model::claveConfiguracion().  
+         🪪  method.notFound                                                                    
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------- 
+  Line   app\Http\Resources\AlertaResource.php                                                  
+ ------ --------------------------------------------------------------------------------------- 
+  27     Cannot call method toIso8601String() on string.                                        
+         🪪  method.nonObject                                                                   
+  29     Access to an undefined property Illuminate\Database\Eloquent\Model::$id.               
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  30     Access to an undefined property Illuminate\Database\Eloquent\Model::$modelo.           
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  31     Access to an undefined property Illuminate\Database\Eloquent\Model::$categoria.        
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+  32     Access to an undefined property Illuminate\Database\Eloquent\Model::$equipo.           
+         🪪  property.notFound                                                                  
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property  
+ ------ --------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------- 
+  Line   app\Http\Resources\ComponenteResource.php                                                    
+ ------ --------------------------------------------------------------------------------------------- 
+  24     Cannot call method toDateString() on string.                                                 
+         🪪  method.nonObject                                                                         
+  33     Access to an undefined property Illuminate\Database\Eloquent\Model::$id.                     
+         🪪  property.notFound                                                                        
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property        
+  34     Access to an undefined property Illuminate\Database\Eloquent\Model::$anio_lanzamiento.       
+         🪪  property.notFound                                                                        
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property        
+  35     Access to an undefined property Illuminate\Database\Eloquent\Model::$categoria_rendimiento.  
+         🪪  property.notFound                                                                        
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property        
+ ------ --------------------------------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------- 
+  Line   app\Http\Resources\IntervencionResource.php   
+ ------ ---------------------------------------------- 
+  21     Cannot call method toDateString() on string.  
+         🪪  method.nonObject                          
+ ------ ---------------------------------------------- 
+
+ ------ -------------------------------------------------- 
+  Line   app\Http\Resources\SesionRendimientoResource.php  
+ ------ -------------------------------------------------- 
+  26     Cannot call method toIso8601String() on string.   
+         🪪  method.nonObject                              
+ ------ -------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Models\Alerta.php                                                                                                                        
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+  60     Offset 'regla' on string on left side of ?? does not exist.                                                                                  
+         🪪  nullCoalesce.offset                                                                                                                      
+  84     Offset 'meses_desde_la…' on array{}|string on left side of ?? does not exist.                                                                
+         🪪  nullCoalesce.offset                                                                                                                      
+  85     Offset 'umbral_meses' on array{}|string on left side of ?? does not exist.                                                                   
+         🪪  nullCoalesce.offset                                                                                                                      
+  89     Offset 'juego' on array{}|string on left side of ?? does not exist.                                                                          
+         🪪  nullCoalesce.offset                                                                                                                      
+  90     Offset 'resolucion' on array{}|string on left side of ?? does not exist.                                                                     
+         🪪  nullCoalesce.offset                                                                                                                      
+  91     Offset 'nivel_calidad' on array{}|string on left side of ?? does not exist.                                                                  
+         🪪  nullCoalesce.offset                                                                                                                      
+  92     Offset 'ultimas_tres…' on array{}|string on left side of ?? does not exist.                                                                  
+         🪪  nullCoalesce.offset                                                                                                                      
+  93     Offset 'umbral_de_tolerancia' on array{}|string on left side of ?? does not exist.                                                           
+         🪪  nullCoalesce.offset                                                                                                                      
+  94     Offset 'promedio_historico' on array{}|string on left side of ?? does not exist.                                                             
+         🪪  nullCoalesce.offset                                                                                                                      
+  95     Offset 'sesiones_evaluadas' on array{}|string on left side of ?? does not exist.                                                             
+         🪪  nullCoalesce.offset                                                                                                                      
+  99     Offset 'pieza_inferior' on array{}|string on left side of ?? does not exist.                                                                 
+         🪪  nullCoalesce.offset                                                                                                                      
+  100    Offset 'modelo_cpu' on array{}|string on left side of ?? does not exist.                                                                     
+         🪪  nullCoalesce.offset                                                                                                                      
+  101    Offset 'nivel_cpu' on array{}|string on left side of ?? does not exist.                                                                      
+         🪪  nullCoalesce.offset                                                                                                                      
+  102    Offset 'modelo_gpu' on array{}|string on left side of ?? does not exist.                                                                     
+         🪪  nullCoalesce.offset                                                                                                                      
+  103    Offset 'nivel_gpu' on array{}|string on left side of ?? does not exist.                                                                      
+         🪪  nullCoalesce.offset                                                                                                                      
+  104    Offset 'diferencia' on array{}|string on left side of ?? does not exist.                                                                     
+         🪪  nullCoalesce.offset                                                                                                                      
+  108    Offset 'meses_sin…' on array{}|string on left side of ?? does not exist.                                                                     
+         🪪  nullCoalesce.offset                                                                                                                      
+  109    Offset 'umbral_meses' on array{}|string on left side of ?? does not exist.                                                                   
+         🪪  nullCoalesce.offset                                                                                                                      
+  110    Offset 'intervenciones…' on array{}|string on left side of ?? does not exist.                                                                
+         🪪  nullCoalesce.offset                                                                                                                      
+  111    Offset 'intervenciones…' on array{}|string on left side of ?? does not exist.                                                                
+         🪪  nullCoalesce.offset                                                                                                                      
+  111    Strict comparison using === between 0 and 1 will always evaluate to false.                                                                   
+         🪪  identical.alwaysFalse                                                                                                                    
+         💡  Because the type is coming from a PHPDoc, you can turn off this check by setting treatPhpDocTypesAsCertain: false in your phpstan.neon.  
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Models\Componente.php                                                                                                                                                                                                        
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  115    Offset 'almacenamiento'|'cpu'|'fuente'|'gabinete'|'gpu'|'motherboard'|'otro'|'ram'|'refrigeracion' on array{cpu: 'CPU', gpu: 'GPU', ram: 'RAM', almacenamiento: 'Almacenamiento', motherboard: 'Motherboard', fuente: 'Fuente',  
+         refrigeracion: 'Refrigeración', gabinete: 'Gabinete', ...} on left side of ?? always exists and is not nullable.                                                                                                                 
+         🪪  nullCoalesce.offset                                                                                                                                                                                                          
+  120    Offset 'activo'|'en_reparacion'|'retirado' on array{activo: 'Activo', en_reparacion: 'En reparación', retirado: 'Retirado'} on left side of ?? always exists and is not nullable.                                                
+         🪪  nullCoalesce.offset                                                                                                                                                                                                          
+  126    Cannot call method diffInMonths() on string.                                                                                                                                                                                     
+         🪪  method.nonObject                                                                                                                                                                                                             
+  134    Access to an undefined property Illuminate\Database\Eloquent\Model::$fecha.                                                                                                                                                      
+         🪪  property.notFound                                                                                                                                                                                                            
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                                                                                            
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------- 
+  Line   app\Models\Cotizacion.php                    
+ ------ --------------------------------------------- 
+  41     Cannot call method diffInHours() on string.  
+         🪪  method.nonObject                         
+ ------ --------------------------------------------- 
+
+ ------ ------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Models\Equipo.php                                                                                                          
+ ------ ------------------------------------------------------------------------------------------------------------------------------- 
+  39     Method App\Models\Equipo::cpu() should return App\Models\Componente|null but returns Illuminate\Database\Eloquent\Model|null.  
+         🪪  return.type                                                                                                                
+  45     Method App\Models\Equipo::gpu() should return App\Models\Componente|null but returns Illuminate\Database\Eloquent\Model|null.  
+         🪪  return.type                                                                                                                
+ ------ ------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+  Line   app\Models\Intervencion.php                                                                                                                                                                                                   
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+  41     Offset 'inspeccion'|'limpieza'|'otro'|'pasta_termica'|'reparacion'|'upgrade' on array{limpieza: 'Limpieza', pasta_termica: 'Cambio de pasta…', inspeccion: 'Inspección', upgrade: 'Upgrade', reparacion: 'Reparación', otro:  
+         'Otro'} on left side of ?? always exists and is not nullable.                                                                                                                                                                 
+         🪪  nullCoalesce.offset                                                                                                                                                                                                       
+  47     Cannot call method greaterThanOrEqualTo() on string.                                                                                                                                                                          
+         🪪  method.nonObject                                                                                                                                                                                                          
+ ------ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Models\SesionRendimiento.php                                                                                                                                 
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  82     Offset '1080p'|'1440p'|'2160p' on array{'1080p': '1080p', '1440p': '1440p', '2160p': '2160p (4K)'} on left side of ?? always exists and is not nullable.         
+         🪪  nullCoalesce.offset                                                                                                                                          
+  83     Offset 'alto'|'bajo'|'medio'|'ultra' on array{bajo: 'Bajo', medio: 'Medio', alto: 'Alto', ultra: 'Ultra'} on left side of ?? always exists and is not nullable.  
+         🪪  nullCoalesce.offset                                                                                                                                          
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------- 
+  Line   app\Services\Analisis\DetectorDesbalance.php                                                 
+ ------ --------------------------------------------------------------------------------------------- 
+  61     Access to an undefined property Illuminate\Database\Eloquent\Model::$categoria_rendimiento.  
+         🪪  property.notFound                                                                        
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property        
+  62     Access to an undefined property Illuminate\Database\Eloquent\Model::$categoria_rendimiento.  
+         🪪  property.notFound                                                                        
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property        
+ ------ --------------------------------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Services\Analisis\EvaluadorAlertas.php                                                                                                                       
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  53     Access to an undefined property Illuminate\Database\Eloquent\Model::$catalogo.                                                                                   
+         🪪  property.notFound                                                                                                                                            
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                            
+  55     Access to an undefined property Illuminate\Database\Eloquent\Model::$modelo.                                                                                     
+         🪪  property.notFound                                                                                                                                            
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property                                                                            
+  63     Parameter #1 $componente of method App\Services\Analisis\ReglaAntiguedad::evaluar() expects App\Models\Componente, Illuminate\Database\Eloquent\Model given.     
+         🪪  argument.type                                                                                                                                                
+  66     Parameter #1 $componente of method App\Services\Analisis\EvaluadorAlertas::persistir() expects App\Models\Componente, Illuminate\Database\Eloquent\Model given.  
+         🪪  argument.type                                                                                                                                                
+  137    Parameter #1 $componente of method App\Services\Analisis\ReglaMantenimiento::evaluar() expects App\Models\Componente, Illuminate\Database\Eloquent\Model given.  
+         🪪  argument.type                                                                                                                                                
+  140    Parameter #1 $componente of method App\Services\Analisis\EvaluadorAlertas::persistir() expects App\Models\Componente, Illuminate\Database\Eloquent\Model given.  
+         🪪  argument.type                                                                                                                                                
+  184    Property App\Models\Alerta::$fundamento (string) does not accept array.                                                                                          
+         🪪  assign.propertyType                                                                                                                                          
+ ------ ----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------------------------- 
+  Line   app\Services\Analisis\ReglaAntiguedad.php                                               
+ ------ ---------------------------------------------------------------------------------------- 
+  44     Access to an undefined property Illuminate\Database\Eloquent\Model::$tipo.              
+         🪪  property.notFound                                                                   
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property   
+  45     Access to an undefined property Illuminate\Database\Eloquent\Model::$anio_lanzamiento.  
+         🪪  property.notFound                                                                   
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property   
+  55     Access to an undefined property Illuminate\Database\Eloquent\Model::$anio_lanzamiento.  
+         🪪  property.notFound                                                                   
+         💡  Learn more: https://phpstan.org/blog/solving-phpstan-access-to-undefined-property   
+ ------ ---------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------- 
+  Line   app\Services\Cotizador\Conversor.php         
+ ------ --------------------------------------------- 
+  29     Cannot call method diffInHours() on string.  
+         🪪  method.nonObject                         
+ ------ --------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   app\Services\Cotizador\ServicioCotizaciones.php                                                                                              
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+  141    Call to function is_array() with array<string, mixed> will always evaluate to true.                                                          
+         🪪  function.alreadyNarrowedType                                                                                                             
+         💡  Because the type is coming from a PHPDoc, you can turn off this check by setting treatPhpDocTypesAsCertain: false in your phpstan.neon.  
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ [ERROR] Found 85 errors                                                                                                
+
